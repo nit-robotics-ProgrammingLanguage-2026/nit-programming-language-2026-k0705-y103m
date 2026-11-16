@@ -2,7 +2,6 @@
 #include <stdlib.h>
  
 int gcd(int m, int x);
- 
 int main(void) {
 int n;
  
