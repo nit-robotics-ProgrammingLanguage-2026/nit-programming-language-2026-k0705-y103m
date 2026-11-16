@@ -1,33 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-int g_m = 9966990;
-int g_x = 0;
-int g_ans = 0;
-
-void calc_gcd(void)
-{
-    int r;
-    int a = g_m;
-    int b = g_x;
-    for (; b != 0;)
-    {
-        r = a % b;
-        a = b;
-        b = r;
-    }
-    g_ans = abs(a);
+ 
+int gcd(int m, int x);
+ 
+int main(void) {
+int n;
+ 
+if (scanf("%d", &n) != 1) {
+return 0;
 }
-
-int main(void)
-{
-    scanf("%d", &g_x);
-    if (g_x > g_m)
-    {
-        printf("NG");
-        return 0;
-    }
-    calc_gcd();
-    printf("%d", g_ans);
-    return 0;
+ 
+// 9966990を超える場合はNGなどの仕様に合わせる
+if (n > 9966990) {
+printf("NG\n");
+return 0;
+}
+ 
+// 負の数は絶対値にする
+int abs_n = abs(n);
+ 
+// 最大公約数を求める
+int ans = gcd(9966990, abs_n);
+ 
+// 結果の出力
+printf("%d\n", ans);
+ 
+return 0;
+}
+ 
+/* ユークリッドの互除法による最大公約数を求める関数 */
+int gcd(int m, int x) {
+int r;
+int a = m;
+int b = x;
+ 
+while (b != 0) {
+r = a % b;
+a = b;
+b = r;
+}
+ 
+return a;
 }
